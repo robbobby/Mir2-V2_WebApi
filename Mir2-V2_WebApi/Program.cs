@@ -12,25 +12,29 @@ using Serilog.Events;
 namespace Mir2_V2_WebApi {
     public class Program {
         public static void Main(string[] args) {
+
+            AddLogging();
+            CreateHostBuilder(args).Build().Run();
+        }
+        public static IHostBuilder CreateHostBuilder(string[] _args) {
+
+            IHostBuilder hostBuilder = Host.CreateDefaultBuilder(_args);
+            hostBuilder.ConfigureAppConfiguration(config => config.AddJsonFile("DatabaseConfig.json"));
+            hostBuilder.ConfigureWebHostDefaults(_webBuilder => {
+                _webBuilder.UseStartup<Startup>();
+            });
+            hostBuilder.UseSerilog();
+
+            return hostBuilder;
+        }
+        private static void AddLogging() {
+
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();
-
-            Log.Information("Hello");
-            CreateHostBuilder(args).Build().Run();
-            Log.Information("Starting server");
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => {
-                    webBuilder.UseStartup<Startup>();
-                })
-                .UseSerilog()
-                .ConfigureLogging(builder => {
-                });
     }
 }
