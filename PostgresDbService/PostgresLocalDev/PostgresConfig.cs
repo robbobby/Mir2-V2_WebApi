@@ -1,5 +1,5 @@
 namespace Database_Mir2_V2_WebApi.PostgresLocalDev {
-    public class PostgresConnectionString {
+    public class PostgresConfig {
         public string Server { get; set; }
         public string Name { get; set; }
         public string Port { get; set; }

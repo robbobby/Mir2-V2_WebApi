@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mir2-V2_WebApi", "Mir2-V2_WebApi\Mir2-V2_WebApi.csproj", "{C6DCACEB-B7DD-4DDD-838B-7019A10A9433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database_Mir2-V2_WebApi", "Database_Mir2-V2_WebApi\Database_Mir2-V2_WebApi.csproj", "{FFDD44CE-F6A4-4694-9014-59E4BB429B6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgresDbService", "PostgresDbService\PostgresDbService.csproj", "{FFDD44CE-F6A4-4694-9014-59E4BB429B6E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models_Mir2-V2_WebApi", "Models_Mir2-V2_WebApi\Models_Mir2-V2_WebApi.csproj", "{E2536447-6847-48BD-89F9-390F19C5CD82}"
 EndProject

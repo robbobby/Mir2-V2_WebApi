@@ -1,17 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Database_Mir2_V2_WebApi.Broker;
+using Database_Mir2_V2_WebApi.PostgresLocalDev;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
+
+using Microsoft.Extensions.Configuration;
+using Mir2_v2_WebApi.Helpers.InjectionHandlers;
+using Mir2_v2_WebApi.InjectionHandlers;
+using Serilog;
 namespace Mir2_V2_WebApi {
     public class Startup {
         public Startup(IConfiguration _configuration) {
@@ -30,6 +31,8 @@ namespace Mir2_V2_WebApi {
                     Version = "v1"
                 });
             });
+            
+            InjectionHandler.AccountDbInjectionHandler.SetDatabaseInjection(_services, Configuration, DbProvider.LocalPostgres);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

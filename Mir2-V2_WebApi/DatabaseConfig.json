@@ -1,15 +1,15 @@
 {
   "database": {
+    "PostgresDev": {
+      "Server": "127.0.0.1",
+      "Name": "Mir2-V2-Development",
+      "Port": "5432",
+      "Username": "rob",
+      "Password": ""
+    },
     "aws": {
       "name": "Mir2-V2_TestDb",
       "awsKeyFile": "/Users/rob/AmazonAccess/DynamoDbAccess.json"
-    },
-    "PostgresDev": {
-      "server": "127.0.0.1",
-      "name": "Mir2-V2-Development",
-      "port": "5432",
-      "username": "rob",
-      "password": ""
     }
   }
 }
