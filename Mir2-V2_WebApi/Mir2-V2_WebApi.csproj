@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>Mir2_V2_WebApi</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Database_Mir2-V2_WebApi\Database_Mir2-V2_WebApi.csproj" />
+      <ProjectReference Include="..\Models_Mir2-V2_WebApi\Models_Mir2-V2_WebApi.csproj" />
+    </ItemGroup>
+
+</Project>
