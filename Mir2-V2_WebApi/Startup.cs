@@ -14,17 +14,17 @@ using Microsoft.OpenApi.Models;
 
 namespace Mir2_V2_WebApi {
     public class Startup {
-        public Startup(IConfiguration configuration) {
-            Configuration = configuration;
+        public Startup(IConfiguration _configuration) {
+            Configuration = _configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services) {
+        public void ConfigureServices(IServiceCollection _services) {
 
-            services.AddControllers();
-            services.AddSwaggerGen(c => {
+            _services.AddControllers();
+            _services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo {
                     Title = "Mir2_V2_WebApi",
                     Version = "v1"

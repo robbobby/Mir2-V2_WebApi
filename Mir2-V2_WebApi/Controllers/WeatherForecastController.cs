@@ -26,6 +26,7 @@ namespace Mir2_V2_WebApi.Controllers {
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger) {
             _logger = logger;
+            _logger.Log(LogLevel.Critical, "Hello Weather");
         }
 
         [HttpGet]
