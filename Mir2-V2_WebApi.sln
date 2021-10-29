@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models_Mir2-V2_WebApi", "Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mir-V2_WebApi_Tests", "Mir-V2_WebApi_Tests\Mir-V2_WebApi_Tests.csproj", "{C400D721-1A15-4EC2-A8C4-39F4CC31BDA5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingService", "LoggingService\LoggingService.csproj", "{7B3D047C-B379-4CAD-A2C3-7FC1BE48D393}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{C400D721-1A15-4EC2-A8C4-39F4CC31BDA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C400D721-1A15-4EC2-A8C4-39F4CC31BDA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C400D721-1A15-4EC2-A8C4-39F4CC31BDA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B3D047C-B379-4CAD-A2C3-7FC1BE48D393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B3D047C-B379-4CAD-A2C3-7FC1BE48D393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B3D047C-B379-4CAD-A2C3-7FC1BE48D393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B3D047C-B379-4CAD-A2C3-7FC1BE48D393}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

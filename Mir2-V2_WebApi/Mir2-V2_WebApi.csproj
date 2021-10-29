@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Database_Mir2-V2_WebApi\Database_Mir2-V2_WebApi.csproj" />
+      <ProjectReference Include="..\LoggingService\LoggingService.csproj" />
       <ProjectReference Include="..\Models_Mir2-V2_WebApi\Models_Mir2-V2_WebApi.csproj" />
     </ItemGroup>
 
