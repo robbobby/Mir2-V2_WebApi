@@ -1,0 +1,9 @@
+{   
+  "PostgresDev": {
+      "Server": "127.0.0.1",
+      "Name": "Mir2-V2-Development",
+      "Port": "5432",
+      "Username": "rob",
+      "Password": ""
+    }
+}

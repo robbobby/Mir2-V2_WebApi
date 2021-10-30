@@ -7,7 +7,7 @@ namespace Database_Mir2_V2_WebApi.PostgresLocalDev {
         public string Password { get; set; }
         
         public string GetConnectionString() {
-            return $"server={Password};database={Name};Port={Port};user id={Username}; password={Password};pooling=true;";
+            return $"server={Server};database={Name};Port={Port};user id={Username}; password={Password};pooling=true;";
         } 
     }
 }

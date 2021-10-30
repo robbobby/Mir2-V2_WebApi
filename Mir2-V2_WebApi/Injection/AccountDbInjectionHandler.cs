@@ -3,8 +3,13 @@ using Database_Mir2_V2_WebApi;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Mir2_v2_WebApi.InjectionHandlers;
+using Serilog;
 namespace Mir2_V2_WebApi.Injection {
     public class AccountDbInjectionHandler {
+
+        private ILogger logger;
+        public AccountDbInjectionHandler() {
+        }
 
         public void SetDatabaseInjection(IServiceCollection _services, IConfiguration _configuration, DbProvider _dbProvider) {
             switch (_dbProvider) {
@@ -25,7 +30,7 @@ namespace Mir2_V2_WebApi.Injection {
             }
         }
         private void InjectLocalPostgres(IServiceCollection _services, IConfiguration _configuration) {
-            InjectPostgres.InjectAccountDb(_configuration, _services);
+            new InjectPostgres().InjectAccountDb(_configuration, _services);
         }
         private void InjectAzurePostgres(IServiceCollection _services, IConfiguration _configuration) {
         }
