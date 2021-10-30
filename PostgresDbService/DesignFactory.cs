@@ -13,7 +13,7 @@ namespace Database_Mir2_V2_WebApi {
                 .AddJsonFile("DatabaseConfig.json")
                 .Build();
 
-            var dbContextBuilder = new DbContextOptionsBuilder();
+            DbContextOptionsBuilder<DbContextBroker> dbContextBuilder = new DbContextOptionsBuilder<DbContextBroker>();
 
             PostgresConfig databaseDetails = new PostgresConfig();
             configuration.GetSection("PostgresDev").Bind(databaseDetails);

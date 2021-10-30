@@ -33,8 +33,8 @@ namespace Mir2_v2_WebApi.Controllers {
         }
 
         [HttpPost("[action]")]
-        public async Task DeleteAccount(Account _account) {
-            await accountDataAccess.DeleteAccount(_account);
+        public async Task DeleteAccount(int _accountId) {
+            accountDataAccess.DeleteAccount(_accountId);
         }
     }
 }

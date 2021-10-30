@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Models_Mir2_V2_WebApi;
 using Models_Mir2_V2_WebApi.Model;
+using Serilog;
 namespace Database_Mir2_V2_WebApi {
     public class AccountRepository : IDataAccess {
 
@@ -21,12 +22,13 @@ namespace Database_Mir2_V2_WebApi {
         }
         
         public async Task<Account> PostAccount(Account _account) {
-            EntityEntry<Account> x = await context.Accounts.AddAsync(_account);
-            return x.Entity;
-        }
-        public Task DeleteAccount(Account _account) {
-            context.Remove(_account);
+            await context.Accounts.AddAsync(_account);
+            await context.SaveChangesAsync();
             return null;
+        }
+        public void DeleteAccount(int _accountId) {
+            context.Accounts.Remove(GetAccount(_accountId).Result);
+            context.SaveChanges();
         }
     }
 }
