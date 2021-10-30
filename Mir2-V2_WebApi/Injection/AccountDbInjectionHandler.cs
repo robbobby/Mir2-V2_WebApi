@@ -2,7 +2,7 @@ using System;
 using Database_Mir2_V2_WebApi;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Mir2_v2_WebApi.InjectionHandlers;
+using Models_Mir2_V2_WebApi;
 using Serilog;
 namespace Mir2_V2_WebApi.Injection {
     public class AccountDbInjectionHandler {

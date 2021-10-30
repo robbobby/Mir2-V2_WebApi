@@ -1,9 +1,9 @@
+using Database_Mir2_V2_WebApi.Broker;
 using Database_Mir2_V2_WebApi.PostgresLocalDev;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Mir2_V2_WebApi.Broker;
-using Mir2_V2_WebApi.Controllers;
+using Models_Mir2_V2_WebApi;
 using Serilog;
 
 namespace Database_Mir2_V2_WebApi {

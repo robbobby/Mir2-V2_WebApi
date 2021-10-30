@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Mir2_V2_WebApi.Injection;
-using Mir2_v2_WebApi.InjectionHandlers;
+using Models_Mir2_V2_WebApi;
 namespace Mir2_V2_WebApi {
     public class Startup {
         public Startup(IConfiguration _configuration) {

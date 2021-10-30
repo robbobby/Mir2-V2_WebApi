@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Database_Mir2_V2_WebApi.Broker;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Mir2_V2_WebApi.Broker;
-using Mir2_V2_WebApi.Controllers;
+using Models_Mir2_V2_WebApi;
 using Models_Mir2_V2_WebApi.Model;
 namespace Database_Mir2_V2_WebApi {
     public class AccountRepository : IDataAccess {

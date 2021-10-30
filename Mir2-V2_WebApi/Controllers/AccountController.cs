@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Mir2_V2_WebApi.Controllers;
+using Models_Mir2_V2_WebApi;
 using Models_Mir2_V2_WebApi.Model;
 namespace Mir2_v2_WebApi.Controllers {
 

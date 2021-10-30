@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Models_Mir2_V2_WebApi.Model;
-namespace Mir2_V2_WebApi.Broker {
+namespace Database_Mir2_V2_WebApi.Broker {
     public sealed class DbContextBroker : DbContext {
         public DbContextBroker(DbContextOptions _options) : base(_options) {
             this.Database.Migrate();
