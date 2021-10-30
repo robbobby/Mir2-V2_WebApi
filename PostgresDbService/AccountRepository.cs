@@ -7,7 +7,7 @@ using Models_Mir2_V2_WebApi;
 using Models_Mir2_V2_WebApi.Model;
 using Serilog;
 namespace Database_Mir2_V2_WebApi {
-    public class AccountRepository : IDataAccess {
+    public class AccountRepository : IDataAccess<Account> {
 
         private readonly DbContextBroker context;
         public AccountRepository(DbContextBroker _context) {

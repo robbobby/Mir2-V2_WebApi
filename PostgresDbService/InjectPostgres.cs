@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Models_Mir2_V2_WebApi;
+using Models_Mir2_V2_WebApi.Model;
 using Serilog;
 
 namespace Database_Mir2_V2_WebApi {
@@ -17,7 +18,7 @@ namespace Database_Mir2_V2_WebApi {
             
             _services.AddDbContext<DbContextBroker>(_context => _context.UseNpgsql(databaseDetails.GetConnectionString()));
             
-            _services.AddTransient<IDataAccess, AccountRepository>();
+            _services.AddTransient<IDataAccess<Account>, AccountRepository>();
         }
     }
 }

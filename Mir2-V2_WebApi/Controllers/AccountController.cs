@@ -9,10 +9,10 @@ namespace Mir2_v2_WebApi.Controllers {
     [Route("[controller]")]
     public class AccountController {
 
-        private readonly IDataAccess accountDataAccess;
+        private readonly IDataAccess<Account> accountDataAccess;
 
 
-        public AccountController(IDataAccess _accountDataAccess) {
+        public AccountController(IDataAccess<Account> _accountDataAccess) {
             accountDataAccess = _accountDataAccess;
         }
 
