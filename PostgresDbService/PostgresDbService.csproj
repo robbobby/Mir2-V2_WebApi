@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Models_Mir2-V2_WebApi\Models_Mir2-V2_WebApi.csproj" />
+      <ProjectReference Include="..\ServerModels_Mir2-V2_WebApi\ServerModels_Mir2-V2_WebApi.csproj" />
     </ItemGroup>
 
     <ItemGroup>

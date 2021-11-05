@@ -6,8 +6,8 @@ namespace Database_Mir2_V2_WebApi.Broker {
             this.Database.Migrate();
         }
 
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<Character> Characters { get; set; }
-        public DbSet<Item> Items { get; set; }
+        public DbSet<AccountDbEntry> Accounts { get; set; }
+        public DbSet<CharacterDbEntry> Characters { get; set; }
+        public DbSet<ItemDbEntry> Items { get; set; }
     }
 }

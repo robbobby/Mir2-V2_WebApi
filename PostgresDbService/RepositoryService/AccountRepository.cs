@@ -23,6 +23,8 @@ namespace Database_Mir2_V2_WebApi {
         }
         
         public async Task<AccountDbEntry> PostAccount(AccountDbEntry _accountDbEntry) {
+            if (IsEmailAlreadyRegistered(_accountDbEntry.Email))
+                return null;
             await context.Accounts.AddAsync(_accountDbEntry);
             await context.SaveChangesAsync();
             return null;

@@ -7,5 +7,6 @@ namespace Models_Mir2_V2_WebApi {
         public Task<T> GetAccount(int _accountId = 1);
         public Task<T> PostAccount(T _account);
         void DeleteAccount(int _accountId);
+        public bool IsEmailAlreadyRegistered(string _email);
     }
 }

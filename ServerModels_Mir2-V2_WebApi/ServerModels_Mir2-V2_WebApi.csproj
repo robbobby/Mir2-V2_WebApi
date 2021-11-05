@@ -5,4 +5,8 @@
         <RootNamespace>Models_Mir2_V2_WebApi</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SharedModels_Mir2-V2\SharedModels_Mir2-V2.csproj" />
+    </ItemGroup>
+
 </Project>

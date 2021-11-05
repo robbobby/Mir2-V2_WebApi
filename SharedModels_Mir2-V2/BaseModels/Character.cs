@@ -1,5 +1,5 @@
 using Models_Mir2_V2_WebApi.Enums;
-namespace SharedModels_Mir2_V2.Model {
+namespace SharedModels_Mir2_V2.BaseModels {
 
     public class Character {
         public string Id { get; set; }

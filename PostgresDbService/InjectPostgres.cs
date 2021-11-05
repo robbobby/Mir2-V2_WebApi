@@ -18,7 +18,7 @@ namespace Database_Mir2_V2_WebApi {
             
             _services.AddDbContext<DbContextBroker>(_context => _context.UseNpgsql(databaseDetails.GetConnectionString()));
             
-            _services.AddTransient<IDataAccess<Account>, AccountRepository>();
+            _services.AddTransient<IDataAccessService<AccountDbEntry>, AccountRepository>();
         }
     }
 }
