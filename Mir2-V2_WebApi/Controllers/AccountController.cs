@@ -10,6 +10,7 @@ using Models_Mir2_V2_WebApi.Enums;
 using Models_Mir2_V2_WebApi.Model;
 using Serilog;
 using SharedModels_Mir2_V2.AccountDto;
+using SharedModels_Mir2_V2.Enums;
 namespace Mir2_v2_WebApi.Controllers {
 
     [ApiController]
@@ -38,13 +39,13 @@ namespace Mir2_v2_WebApi.Controllers {
         }
 
         [Microsoft.AspNetCore.Mvc.HttpPost("[action]")]
-        public async Task<IActionResult> RegisterNewAccount([Microsoft.AspNetCore.Mvc.FromBody] AccountRegisterDtoC2S _accountDbEntry) {
+        public async Task<AccountRegisterResult> RegisterNewAccount([Microsoft.AspNetCore.Mvc.FromBody] AccountRegisterDtoC2S _accountDbEntry) {
             HttpResponseMessage responseMessage = new HttpResponseMessage();
             responseMessage.StatusCode = HttpStatusCode.InternalServerError;
             if (!new EmailAddressAttribute().IsValid(_accountDbEntry.Email))
-                return UnprocessableEntity(AccountError.EmailNotValid);
+                return AccountRegisterResult.EmailNotValid;
             if (accountDataAccessService.IsEmailAlreadyRegistered(_accountDbEntry.Email))
-                return UnprocessableEntity(AccountError.EmailAlreadyInUse);
+                return AccountRegisterResult.EmailAlreadyExists;
             
             AccountDbEntry account = new AccountDbEntry() {
                 Email = _accountDbEntry.Email,
@@ -56,7 +57,7 @@ namespace Mir2_v2_WebApi.Controllers {
                 IsLoggedIn = false
             };
             var accountResponse = await accountDataAccessService.PostAccount(account);
-            return Ok();
+            return AccountRegisterResult.Success;
         }
 
 

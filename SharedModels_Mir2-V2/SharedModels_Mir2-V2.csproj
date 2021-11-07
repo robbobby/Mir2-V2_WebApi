@@ -39,6 +39,7 @@
       <Compile Include="BaseModels\Account.cs" />
       <Compile Include="BaseModels\Character.cs" />
       <Compile Include="BaseModels\Item.cs" />
+      <Compile Include="Enums\AccountRegisterResult.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
