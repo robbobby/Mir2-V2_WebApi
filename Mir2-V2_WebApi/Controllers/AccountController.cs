@@ -4,9 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Mir2_V2_WebApi.Helpers;
 using Models_Mir2_V2_WebApi;
-using Models_Mir2_V2_WebApi.Enums;
 using Models_Mir2_V2_WebApi.Model;
 using Serilog;
 using SharedModels_Mir2_V2.AccountDto;
@@ -18,10 +20,13 @@ namespace Mir2_v2_WebApi.Controllers {
     public class AccountController : ControllerBase {
 
         private readonly IDataAccessService<AccountDbEntry> accountDataAccessService;
+        private readonly IMapper mapper;
+        private readonly string pepper;
 
-
-        public AccountController(IDataAccessService<AccountDbEntry> _accountDataAccessService) {
+        public AccountController(IDataAccessService<AccountDbEntry> _accountDataAccessService, IMapper _mapper, IConfiguration _configuration) {
             accountDataAccessService = _accountDataAccessService;
+            mapper = _mapper;
+            pepper = _configuration.GetValue<string>("pepper");
         }
 
         [Microsoft.AspNetCore.Mvc.HttpGet("[action]")]
@@ -40,22 +45,20 @@ namespace Mir2_v2_WebApi.Controllers {
 
         [Microsoft.AspNetCore.Mvc.HttpPost("[action]")]
         public async Task<AccountRegisterResult> RegisterNewAccount([Microsoft.AspNetCore.Mvc.FromBody] AccountRegisterDtoC2S _accountDbEntry) {
+            Log.Debug(_accountDbEntry.Password);
             HttpResponseMessage responseMessage = new HttpResponseMessage();
             responseMessage.StatusCode = HttpStatusCode.InternalServerError;
             if (!new EmailAddressAttribute().IsValid(_accountDbEntry.Email))
                 return AccountRegisterResult.EmailNotValid;
             if (accountDataAccessService.IsEmailAlreadyRegistered(_accountDbEntry.Email))
                 return AccountRegisterResult.EmailAlreadyExists;
+
+            string salt = Hashing.GetRandomSalt();
+            _accountDbEntry.Password = Hashing.HashPassword($"{_accountDbEntry.Password}{pepper}", salt);
             
-            AccountDbEntry account = new AccountDbEntry() {
-                Email = _accountDbEntry.Email,
-                FirstName = _accountDbEntry.FirstName,
-                LastName = _accountDbEntry.LastName,
-                Password = _accountDbEntry.Password,
-                UserName = _accountDbEntry.UserName,
-                SessionToken = Guid.Empty,
-                IsLoggedIn = false
-            };
+            AccountDbEntry account = mapper.Map<AccountDbEntry>(_accountDbEntry);
+            account.Salt = salt;
+
             var accountResponse = await accountDataAccessService.PostAccount(account);
             return AccountRegisterResult.Success;
         }

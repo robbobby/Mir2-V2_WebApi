@@ -11,5 +11,6 @@
       "name": "Mir2-V2_TestDb",
       "awsKeyFile": "/Users/rob/AmazonAccess/DynamoDbAccess.json"
     }
-  }
+  },
+  "pepper": ".2"
 }

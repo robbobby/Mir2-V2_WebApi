@@ -24,6 +24,9 @@ namespace Mir2_V2_WebApi {
                     Version = "v1"
                 });
             });
+
+            _services.AddAutoMapper(typeof(Startup));
+            
             InjectionHandler.AccountDbInjectionHandler.SetDatabaseInjection(_services, Configuration, DbProvider.LocalPostgres);
         }
 

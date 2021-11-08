@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Database_Mir2_V2_WebApi.Migrations
 {
     [DbContext(typeof(DbContextBroker))]
-    [Migration("20211105095018_Update")]
+    [Migration("20211108175448_Update")]
     partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,9 @@ namespace Database_Mir2_V2_WebApi.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Salt")
                         .HasColumnType("text");
 
                     b.Property<Guid>("SessionToken")

@@ -43,6 +43,9 @@ namespace Database_Mir2_V2_WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Salt")
+                        .HasColumnType("text");
+
                     b.Property<Guid>("SessionToken")
                         .HasColumnType("uuid");
 

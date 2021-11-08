@@ -17,5 +17,6 @@ namespace Models_Mir2_V2_WebApi.Model {
         public string UserName { get; set; }
         public Guid SessionToken { get; set; }
         public bool IsLoggedIn { get; set; }
+        public string Salt { get; set; }
     }
 }

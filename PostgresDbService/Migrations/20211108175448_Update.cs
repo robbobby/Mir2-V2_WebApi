@@ -20,7 +20,8 @@ namespace Database_Mir2_V2_WebApi.Migrations
                     Email = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "text", nullable: false),
                     SessionToken = table.Column<Guid>(type: "uuid", nullable: false),
-                    IsLoggedIn = table.Column<bool>(type: "boolean", nullable: false)
+                    IsLoggedIn = table.Column<bool>(type: "boolean", nullable: false),
+                    Salt = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
