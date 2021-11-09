@@ -49,23 +49,7 @@
       <Folder Include="HttpResponses" />
     </ItemGroup>
     <ItemGroup>
-      <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
-        <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
-        <Private>True</Private>
-      </Reference>
-      <Reference Include="AutoMapper.Extensions.Microsoft.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=e767ac9c89543656">
-        <HintPath>..\packages\AutoMapper.Extensions.Microsoft.DependencyInjection.8.1.1\lib\netstandard2.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll</HintPath>
-        <Private>True</Private>
-      </Reference>
       <Reference Include="Microsoft.CSharp" />
-      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-        <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-        <Private>True</Private>
-      </Reference>
-      <Reference Include="Microsoft.Extensions.Options, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-        <HintPath>..\packages\Microsoft.Extensions.Options.3.0.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
-        <Private>True</Private>
-      </Reference>
       <Reference Include="Microsoft.Extensions.Primitives, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
         <HintPath>..\packages\Microsoft.Extensions.Primitives.3.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
         <Private>True</Private>
