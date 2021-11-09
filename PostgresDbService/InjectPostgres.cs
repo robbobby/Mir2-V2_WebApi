@@ -10,15 +10,15 @@ using Serilog;
 namespace Database_Mir2_V2_WebApi {
     public class InjectPostgres {
         
-        public void InjectAccountDb(IConfiguration _configuration, IServiceCollection _services) {
+        public void InjectAccountDb(IConfiguration configuration, IServiceCollection services) {
             PostgresConfig databaseDetails = new PostgresConfig();
-            _configuration.GetSection("database:PostgresDev").Bind(databaseDetails);
+            configuration.GetSection("database:PostgresDev").Bind(databaseDetails);
             
             Log.Debug(databaseDetails.GetConnectionString());
             
-            _services.AddDbContext<DbContextBroker>(_context => _context.UseNpgsql(databaseDetails.GetConnectionString()));
+            services.AddDbContext<DbContextBroker>(_context => _context.UseNpgsql(databaseDetails.GetConnectionString()));
             
-            _services.AddTransient<IDataAccessService<AccountDbEntry>, AccountRepository>();
+            services.AddTransient<IDataAccessService<AccountDbEntry>, AccountRepository>();
         }
     }
 }

@@ -19,10 +19,10 @@ namespace Models_Mir2_V2_WebApi.Attributes {
             }
         }
 
-        public override bool IsValid(object _value) {
-            if (!new EmailAddressAttribute().IsValid(_value.ToString()))
+        public override bool IsValid(object value) {
+            if (!new EmailAddressAttribute().IsValid(value.ToString()))
                 return false;
-            return AccountService.IsEmailAlreadyRegistered(_value.ToString());
+            return AccountService.IsEmailAlreadyRegistered(value.ToString());
         }
     }
 }

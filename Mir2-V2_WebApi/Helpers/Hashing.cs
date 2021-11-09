@@ -1,7 +1,7 @@
 using BCrypt.Net;
 
 namespace Mir2_V2_WebApi.Helpers {
-    public class Hashing {
+    public static class Hashing {
         public static string GetRandomSalt() {
             return BCrypt.Net.BCrypt.GenerateSalt(12);
         }
@@ -13,6 +13,5 @@ namespace Mir2_V2_WebApi.Helpers {
         public static bool ValidatePassword(string password, string correctHash) {
             return BCrypt.Net.BCrypt.Verify(password, correctHash);
         }
-        
     }
 }

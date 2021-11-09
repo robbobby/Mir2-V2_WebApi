@@ -7,39 +7,37 @@ using Serilog;
 namespace Mir2_V2_WebApi.Injection {
     public class AccountDbInjectionHandler {
 
-        private ILogger logger;
-        public AccountDbInjectionHandler() {
-        }
+        private ILogger _logger;
 
-        public void SetDatabaseInjection(IServiceCollection _services, IConfiguration _configuration, DbProvider _dbProvider) {
-            switch (_dbProvider) {
+        public void SetDatabaseInjection(IServiceCollection services, IConfiguration configuration, DbProvider dbProvider) {
+            switch (dbProvider) {
                 case DbProvider.AwsDynamo:
-                    InjectAwsDynamo(_services);
+                    InjectAwsDynamo(services);
                     break;
                 case DbProvider.AwsMySql:
-                    InjectAwsMySql(_services);
+                    InjectAwsMySql(services);
                     break;
                 case DbProvider.AzurePostgres:
-                    InjectAzurePostgres(_services, _configuration);
+                    InjectAzurePostgres(services, configuration);
                     break;
                 case DbProvider.LocalPostgres:
-                    InjectLocalPostgres(_services, _configuration);
+                    InjectLocalPostgres(services, configuration);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(_dbProvider), _dbProvider, null);
+                    throw new ArgumentOutOfRangeException(nameof(dbProvider), dbProvider, null);
             }
         }
-        private void InjectLocalPostgres(IServiceCollection _services, IConfiguration _configuration) {
-            new InjectPostgres().InjectAccountDb(_configuration, _services);
+        private void InjectLocalPostgres(IServiceCollection services, IConfiguration configuration) {
+            new InjectPostgres().InjectAccountDb(configuration, services);
         }
-        private void InjectAzurePostgres(IServiceCollection _services, IConfiguration _configuration) {
+        private void InjectAzurePostgres(IServiceCollection services, IConfiguration configuration) {
         }
 
-        private void InjectAwsMySql(IServiceCollection _services) {
+        private void InjectAwsMySql(IServiceCollection services) {
             throw new NotImplementedException();
         }
 
-        private void InjectAwsDynamo(IServiceCollection _services) {
+        private void InjectAwsDynamo(IServiceCollection services) {
             // AmazonInjectionBase.InjectBaseServices(_services);
             // _services.AddSingleton<IDataAccess, DynamoDbAccountRepository>();
         }

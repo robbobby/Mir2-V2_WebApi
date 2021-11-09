@@ -10,32 +10,32 @@ using Serilog;
 namespace Database_Mir2_V2_WebApi {
     public class AccountRepository : IDataAccessService<AccountDbEntry> {
 
-        private readonly DbContextBroker context;
-        public AccountRepository(DbContextBroker _context) {
-            context = _context;
+        private readonly DbContextBroker _context;
+        public AccountRepository(DbContextBroker context) {
+            _context = context;
         }
         
         public async Task<IEnumerable<AccountDbEntry>> GetAllAccounts() {
-            return await context.Accounts.ToListAsync();
+            return await _context.Accounts.ToListAsync();
         }
-        public async Task<AccountDbEntry> GetAccount(int _accountId = 1) {
-            return await context.FindAsync<AccountDbEntry>(_accountId);
+        public async Task<AccountDbEntry> GetAccount(int accountId = 1) {
+            return await _context.FindAsync<AccountDbEntry>(accountId);
         }
         
-        public async Task<AccountDbEntry> PostAccount(AccountDbEntry _accountDbEntry) {
-            if (IsEmailAlreadyRegistered(_accountDbEntry.Email))
+        public async Task<AccountDbEntry> PostAccount(AccountDbEntry accountDbEntry) {
+            if (IsEmailAlreadyRegistered(accountDbEntry.Email))
                 return null;
-            await context.Accounts.AddAsync(_accountDbEntry);
-            await context.SaveChangesAsync();
+            await _context.Accounts.AddAsync(accountDbEntry);
+            await _context.SaveChangesAsync();
             return null;
         }
-        public void DeleteAccount(int _accountId) {
-            context.Accounts.Remove(GetAccount(_accountId).Result);
-            context.SaveChanges();
+        public void DeleteAccount(int accountId) {
+            _context.Accounts.Remove(GetAccount(accountId).Result);
+            _context.SaveChanges();
         }
 
-        public bool IsEmailAlreadyRegistered(string _email) {
-            return context.Accounts.Any(_account => _account.Email.Equals(_email));
+        public bool IsEmailAlreadyRegistered(string email) {
+            return _context.Accounts.Any(account => account.Email.Equals(email));
         }
     }
 }
