@@ -27,4 +27,8 @@
       <ProjectReference Include="..\ServerModels_Mir2-V2_WebApi\ServerModels_Mir2-V2_WebApi.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Helpers" />
+    </ItemGroup>
+
 </Project>

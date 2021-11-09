@@ -35,6 +35,7 @@
       <Compile Include="AccountDto\AccountRegisterDtoC2S.cs" />
       <Compile Include="AccountDto\LoginDto\AccountLoginDtoC2S.cs" />
       <Compile Include="AccountDto\LoginDto\AccountLoginDtoS2C.cs" />
+      <Compile Include="AccountLoginResult.cs" />
       <Compile Include="Enums\AccountError.cs" />
       <Compile Include="Enums\CharacterClass.cs" />
       <Compile Include="BaseModels\Account.cs" />
