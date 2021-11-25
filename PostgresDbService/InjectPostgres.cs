@@ -1,5 +1,6 @@
 using Database_Mir2_V2_WebApi.Broker;
 using Database_Mir2_V2_WebApi.PostgresLocalDev;
+using Database_Mir2_V2_WebApi.RepositoryService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

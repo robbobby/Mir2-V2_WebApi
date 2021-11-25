@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using SharedModels_Mir2_V2.BaseModels;
+using SharedModels_Mir2_V2.Enums;
 namespace Models_Mir2_V2_WebApi.Attributes {
     
     public class UniqueEmailAttribute : ValidationAttribute {
@@ -19,10 +20,10 @@ namespace Models_Mir2_V2_WebApi.Attributes {
             }
         }
 
-        public override bool IsValid(object value) {
-            if (!new EmailAddressAttribute().IsValid(value.ToString()))
-                return false;
-            return AccountService.IsEmailAlreadyRegistered(value.ToString());
+        public AccountRegisterResult IsValid(object emailValue, object userNameValue) {
+            if (!new EmailAddressAttribute().IsValid(emailValue.ToString()))
+                return AccountRegisterResult.EmailNotValid;
+            return AccountService.IsEmailOrUserNameAlreadyRegistered(emailValue.ToString(), userNameValue.ToString());
         }
     }
 }

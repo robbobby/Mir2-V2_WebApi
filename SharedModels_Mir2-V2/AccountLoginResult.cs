@@ -4,7 +4,7 @@ namespace SharedModels_Mir2_V2 {
         public LoginResult LoginResult { get; }
         
         public AccountLoginDtoS2C Account { get; }
-        public AccountLoginResult(LoginResult loginResult, AccountLoginDtoS2C account) {
+        public AccountLoginResult(LoginResult loginResult, AccountLoginDtoS2C account = null) {
             LoginResult = loginResult;
             Account = account;
         }
@@ -14,6 +14,8 @@ namespace SharedModels_Mir2_V2 {
         UserNameDoesNotExist,
         WrongPassword,
         AccountBanned,
-        Success
+        Success,
+        AlreadyLoggedIn,
+        NetworkError
     }
 }

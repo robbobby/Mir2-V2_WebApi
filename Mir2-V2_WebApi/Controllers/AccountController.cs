@@ -33,9 +33,8 @@ namespace Mir2_v2_WebApi.Controllers {
         [HttpGet("[action]")]
         public async Task<IEnumerable<AccountDbEntry>> GetAllAccounts(int accountId = 1) {
             return await _accountDataAccessService.GetAllAccounts();
-        }
-
-
+        } 
+        
         [HttpPost("[action]")]
         public async Task<AccountLoginResult> GetAccount([FromBody] AccountLoginDtoC2S account) {
             AccountLoginResult x = await _accountDataAccessService.GetAccount(account);
@@ -44,12 +43,11 @@ namespace Mir2_v2_WebApi.Controllers {
 
         [HttpPost("[action]")]
         public async Task<AccountRegisterResult> RegisterNewAccount([FromBody] AccountRegisterDtoC2S accountDbEntry) {
-            HttpResponseMessage responseMessage = new();
-            responseMessage.StatusCode = HttpStatusCode.InternalServerError;
             if (!new EmailAddressAttribute().IsValid(accountDbEntry.Email))
                 return AccountRegisterResult.EmailNotValid;
-            if (_accountDataAccessService.IsEmailAlreadyRegistered(accountDbEntry.Email))
-                return AccountRegisterResult.EmailAlreadyExists;
+            AccountRegisterResult uniqueEmailAndUserNameResult = _accountDataAccessService.IsEmailOrUserNameAlreadyRegistered(accountDbEntry.Email, accountDbEntry.UserName);
+            if (uniqueEmailAndUserNameResult != AccountRegisterResult.Success)
+                return uniqueEmailAndUserNameResult;
 
             var salt = Hashing.GetRandomSalt();
             accountDbEntry.Password = Hashing.HashPassword(accountDbEntry.Password, salt);
@@ -60,7 +58,6 @@ namespace Mir2_v2_WebApi.Controllers {
             AccountDbEntry accountResponse = await _accountDataAccessService.PostAccount(account);
             return AccountRegisterResult.Success;
         }
-
 
         [HttpPost("[action]")]
         public async Task DeleteAccount(int accountId) {
