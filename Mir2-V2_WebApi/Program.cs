@@ -17,7 +17,7 @@ namespace Mir2_V2_WebApi {
             Log.Information("Server Starting");
 
             IHostBuilder hostBuilder = Host.CreateDefaultBuilder(_args);
-            hostBuilder.ConfigureAppConfiguration(_config => _config.AddJsonFile("DatabaseConfig.json")); // TODO: Load DatabaseConfig from PostgresDbService.
+            hostBuilder.ConfigureAppConfiguration(_config => _config.AddJsonFile("DatabaseConfig.json")); // TODO: Load DatabaseConfig from Application.
             
             hostBuilder.ConfigureWebHostDefaults(_webBuilder => {
                 _webBuilder.UseStartup<Startup>();

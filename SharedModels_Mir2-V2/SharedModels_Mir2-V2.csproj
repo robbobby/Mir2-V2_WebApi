@@ -32,22 +32,19 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-      <Compile Include="AccountDto\AccountRegisterDtoC2S.cs" />
-      <Compile Include="AccountDto\LoginDto\AccountLoginDtoC2S.cs" />
-      <Compile Include="AccountDto\LoginDto\AccountLoginDtoS2C.cs" />
-      <Compile Include="AccountLoginResult.cs" />
-      <Compile Include="Enums\AccountError.cs" />
-      <Compile Include="Enums\CharacterClass.cs" />
-      <Compile Include="BaseModels\Account.cs" />
-      <Compile Include="BaseModels\Character.cs" />
-      <Compile Include="BaseModels\Item.cs" />
-      <Compile Include="Enums\AccountRegisterResult.cs" />
+      <Compile Include="src\AccountDto\AccountRegisterDtoC2S.cs" />
+      <Compile Include="src\AccountDto\LoginDto\AccountLoginDtoC2S.cs" />
+      <Compile Include="src\AccountDto\LoginDto\AccountLoginDtoS2C.cs" />
+      <Compile Include="src\AccountLoginResult.cs" />
+      <Compile Include="src\BaseModels\Account.cs" />
+      <Compile Include="src\BaseModels\Character.cs" />
+      <Compile Include="src\BaseModels\Item.cs" />
+      <Compile Include="src\Enums\AccountError.cs" />
+      <Compile Include="src\Enums\AccountRegisterResult.cs" />
+      <Compile Include="src\Enums\CharacterClass.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="HttpResponses" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="Microsoft.CSharp" />

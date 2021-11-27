@@ -22,9 +22,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\PostgresDbService\PostgresDbService.csproj" />
+      <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\LoggingService\LoggingService.csproj" />
-      <ProjectReference Include="..\ServerModels_Mir2-V2_WebApi\ServerModels_Mir2-V2_WebApi.csproj" />
+      <ProjectReference Include="..\ServerDomain\ServerDomain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
