@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Net.Http;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
+using Application.Repository;
 using AutoMapper;
 using Database_Mir2_V2_WebApi;
 using Microsoft.AspNetCore.Mvc;
@@ -21,47 +23,35 @@ namespace Mir2_v2_WebApi.Controllers {
     [Route("[controller]")]
     public class AccountController : ControllerBase {
 
-        private readonly IDataAccessService<AccountDbEntry> _accountDataAccessService;
+        private readonly IAccountAccessService<AccountDbEntry> _accountAccountAccessService;
         private readonly IMapper _mapper;
 
-        public AccountController(IDataAccessService<AccountDbEntry> accountDataAccessService, IMapper mapper, IConfiguration configuration) {
-            _accountDataAccessService = accountDataAccessService;
+        public AccountController(IAccountAccessService<AccountDbEntry> accountAccountAccessService, IMapper mapper, IConfiguration configuration) {
+            _accountAccountAccessService = accountAccountAccessService;
             _mapper = mapper;
             Hashing.Pepper = configuration.GetValue<string>("pepper");
         }
 
         [HttpGet("[action]")]
         public async Task<IEnumerable<AccountDbEntry>> GetAllAccounts(int accountId = 1) {
-            return await _accountDataAccessService.GetAllAccounts();
+            return await _accountAccountAccessService.GetAllAccounts();
         } 
         
         [HttpPost("[action]")]
         public async Task<AccountLoginResult> GetAccount([FromBody] AccountLoginDtoC2S account) {
-            AccountLoginResult x = await _accountDataAccessService.GetAccount(account);
-            return x;
+            AccountLoginResult result = await _accountAccountAccessService.GetAccount(account);
+            return result;
         }
 
         [HttpPost("[action]")]
         public async Task<AccountRegisterResult> RegisterNewAccount([FromBody] AccountRegisterDtoC2S accountDbEntry) {
-            if (!new EmailAddressAttribute().IsValid(accountDbEntry.Email))
-                return AccountRegisterResult.EmailNotValid;
-            AccountRegisterResult uniqueEmailAndUserNameResult = _accountDataAccessService.IsEmailOrUserNameAlreadyRegistered(accountDbEntry.Email, accountDbEntry.UserName);
-            if (uniqueEmailAndUserNameResult != AccountRegisterResult.Success)
-                return uniqueEmailAndUserNameResult;
-
-            var salt = Hashing.GetRandomSalt();
-            accountDbEntry.Password = Hashing.HashPassword(accountDbEntry.Password, salt);
-
-            AccountDbEntry account = _mapper.Map<AccountDbEntry>(accountDbEntry);
-            account.Salt = salt;
-
-            AccountDbEntry accountResponse = await _accountDataAccessService.PostAccount(account);
-            return AccountRegisterResult.Success;
+            AccountRegisterResult accountResponse = await _accountAccountAccessService.PostAccount(accountDbEntry);
+            return accountResponse;
         }
 
         [HttpPost("[action]")]
         public async Task DeleteAccount(int accountId) {
-            _accountDataAccessService.DeleteAccount(accountId);
+            _accountAccountAccessService.DeleteAccount(accountId);
         }
     }
 }

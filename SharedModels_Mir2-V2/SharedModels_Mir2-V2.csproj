@@ -32,16 +32,19 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Include="src\AccountDto\Account.cs" />
+      <Compile Include="src\AccountDto\AccountLoginDto.cs" />
+      <Compile Include="src\AccountDto\AccountLoginDtoC2S.cs" />
       <Compile Include="src\AccountDto\AccountRegisterDtoC2S.cs" />
-      <Compile Include="src\AccountDto\LoginDto\AccountLoginDtoC2S.cs" />
-      <Compile Include="src\AccountDto\LoginDto\AccountLoginDtoS2C.cs" />
       <Compile Include="src\AccountLoginResult.cs" />
-      <Compile Include="src\BaseModels\Account.cs" />
-      <Compile Include="src\BaseModels\Character.cs" />
-      <Compile Include="src\BaseModels\Item.cs" />
+      <Compile Include="src\CharacterDto\Character.cs" />
       <Compile Include="src\Enums\AccountError.cs" />
       <Compile Include="src\Enums\AccountRegisterResult.cs" />
       <Compile Include="src\Enums\CharacterClass.cs" />
+      <Compile Include="src\Enums\CharacterDeleteResult.cs" />
+      <Compile Include="src\Enums\CharacterGender.cs" />
+      <Compile Include="src\Enums\CharacterRepositoryResult.cs" />
+      <Compile Include="src\ItemDto\Item.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
@@ -74,6 +77,10 @@
         <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
         <Private>True</Private>
       </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="src\CharacterDto\Character.cs.meta" />
+      <Content Include="src\ItemDto\Item.cs.meta" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\packages\Microsoft.NETFramework.ReferenceAssemblies.net471.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net471.targets" Condition="Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net471.1.0.2\build\Microsoft.NETFramework.ReferenceAssemblies.net471.targets')" />

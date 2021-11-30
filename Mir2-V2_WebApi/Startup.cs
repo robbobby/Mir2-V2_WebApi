@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Application;
+using Application.Profiles;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Mir2_V2_WebApi.Injection;
 using Models_Mir2_V2_WebApi;
+using Serilog;
 namespace Mir2_V2_WebApi {
     public class Startup {
         public Startup(IConfiguration _configuration) {
@@ -24,12 +31,11 @@ namespace Mir2_V2_WebApi {
                     Version = "v1"
                 });
             });
+            IServiceCollection y = _services.AddAutoMapper(typeof(MapperProfile));
 
-            _services.AddAutoMapper(typeof(Startup));
-            
             InjectionHandler.AccountDbInjectionHandler.SetDatabaseInjection(_services, Configuration, DbProvider.LocalPostgres);
         }
-
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {

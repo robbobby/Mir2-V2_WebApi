@@ -1,10 +1,11 @@
+using SharedModels_Mir2_V2.AccountDto;
 using SharedModels_Mir2_V2.AccountDto.LoginDto;
 namespace SharedModels_Mir2_V2 {
     public class AccountLoginResult {
         public LoginResult LoginResult { get; }
         
-        public AccountLoginDtoS2C Account { get; }
-        public AccountLoginResult(LoginResult loginResult, AccountLoginDtoS2C account = null) {
+        public AccountLoginDto Account { get; }
+        public AccountLoginResult(LoginResult loginResult, AccountLoginDto account = null) {
             LoginResult = loginResult;
             Account = account;
         }
