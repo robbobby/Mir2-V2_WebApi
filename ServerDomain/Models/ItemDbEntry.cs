@@ -1,8 +1,12 @@
 using System.ComponentModel.DataAnnotations;
-namespace Models_Mir2_V2_WebApi.Model {
+using Models_Mir2_V2_WebApi.Model;
+namespace Models_Mir2_V2_WebApi.Models {
     public class ItemDbEntry {
         
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public short ItemTypeId { get; set; }
+        public AccountDbEntry AccountDbEntry { get; set; }
+        
     }
 }

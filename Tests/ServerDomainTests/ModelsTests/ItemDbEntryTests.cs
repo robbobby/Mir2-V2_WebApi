@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using Models_Mir2_V2_WebApi.Model;
+using Models_Mir2_V2_WebApi.Models;
 using Xunit;
 namespace ServerDomainTests.ModelsTests {
     public class ItemDbEntryTests {
