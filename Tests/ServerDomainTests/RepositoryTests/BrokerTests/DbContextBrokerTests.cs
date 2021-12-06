@@ -17,10 +17,12 @@ namespace ServerDomainTests.RepositoryTests.BrokerTests {
         public DbContextBrokerTests(TestDatabase testDatabase, ITestOutputHelper outputHelper) {
             _outputHelper = outputHelper;
             _testDatabase = testDatabase;
+            using TestDatabase database = new TestDatabase();
         }
         
         [Fact]
         public async void Has_AccountDbSet() {
+            _testDatabase = new TestDatabase();
             const int numberOfAccounts = 3;
             var account = await _testDatabase.AddFakeAccountsToDatabase(numberOfAccounts);
             var result = _testDatabase.DbContext.Accounts.ToList();
@@ -32,10 +34,11 @@ namespace ServerDomainTests.RepositoryTests.BrokerTests {
 
         [Fact]
         public async void Has_CharacterDbSet() {
+            _testDatabase = new TestDatabase();
             const int numberOfCharacters = 3;
             var character = await _testDatabase.AddFakeCharactersToDatabase(numberOfCharacters);
             var result = _testDatabase.DbContext.Characters.ToList();
-            
+
             for (var i = 0; i < numberOfCharacters; i++) {
                 Assert.True(result.Count == numberOfCharacters);
                 Assert.Equal(result[i].Name, character[i].Name);
@@ -44,6 +47,7 @@ namespace ServerDomainTests.RepositoryTests.BrokerTests {
 
         [Fact]
         public async void Has_ItemDbSet() {
+            _testDatabase = new TestDatabase();
             const int numberOfItems = 3;
             List<ItemDbEntry> items = await _testDatabase.AddFakeItemsToDatabase(numberOfItems);
             var result = _testDatabase.DbContext.Items.ToList();

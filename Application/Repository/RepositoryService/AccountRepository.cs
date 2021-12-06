@@ -27,7 +27,7 @@ namespace Application.Repository.RepositoryService {
         }
 
         public async Task<AccountLoginResult> GetAccount(AccountLoginDtoC2S accountDto) {
-            AccountDbEntry account = await _context.Accounts.Where(account => account.UserName == accountDto.UserName).FirstAsync();
+            AccountDbEntry account = await _context.Accounts.Where(account => account.UserName == accountDto.UserName).FirstOrDefaultAsync();
             if (account == null)
                 return new AccountLoginResult(LoginResult.UserNameDoesNotExist);
 
@@ -47,8 +47,11 @@ namespace Application.Repository.RepositoryService {
 
         public async Task<AccountRegisterResult> PostAccount(AccountRegisterDtoC2S accountDbEntry) {
             if (IsEmailValid(accountDbEntry) != AccountRegisterResult.Ok) {
-                return (AccountRegisterResult)IsEmailValid(accountDbEntry);
+                return IsEmailValid(accountDbEntry);
             }
+            
+            if (IsEmailOrUserNameAlreadyRegistered(accountDbEntry.Email, accountDbEntry.UserName) != AccountRegisterResult.Ok)
+                return IsEmailOrUserNameAlreadyRegistered(accountDbEntry.Email, accountDbEntry.UserName);
 
             var salt = Hashing.GetRandomSalt();
             accountDbEntry.Password = Hashing.HashPassword(accountDbEntry.Password, salt);
@@ -65,21 +68,18 @@ namespace Application.Repository.RepositoryService {
         private AccountRegisterResult IsEmailValid(AccountRegisterDtoC2S accountDbEntry) {
             if (!new EmailAddressAttribute().IsValid(accountDbEntry.Email))
                 return AccountRegisterResult.EmailNotValid;
-            AccountRegisterResult uniqueEmailAndUserNameResult = IsEmailOrUserNameAlreadyRegistered(accountDbEntry.Email, accountDbEntry.UserName);
-            if (uniqueEmailAndUserNameResult != AccountRegisterResult.Ok)
-                return uniqueEmailAndUserNameResult;
             return AccountRegisterResult.Ok;
         }
 
         public void DeleteAccount(int accountId) {
             // _context.Accounts.Remove(GetAccount(accountId).Result);
-            _context.SaveChanges();
+            // _context.SaveChanges();
         }
 
         public AccountRegisterResult IsEmailOrUserNameAlreadyRegistered(string email, string userName) {
             if (_context.Accounts.Any(account => account.Email.Equals(email)))
                 return AccountRegisterResult.EmailAlreadyExists;
-            if (_context.Accounts.Any(account => account.Email.Equals(userName)))
+            if (_context.Accounts.Any(account => account.UserName.Equals(userName)))
                 return AccountRegisterResult.UserNameAlreadyExists;
             return AccountRegisterResult.Ok;
         }

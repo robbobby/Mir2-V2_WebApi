@@ -4,6 +4,9 @@ namespace SharedModels_Mir2_V2.AccountDto.LoginDto {
             UserName = userName;
             Password = password;
         }
+        public AccountLoginDtoC2S() {
+            
+        }
         public string UserName { get; set; }
         public string Password { get; set; }
     }
